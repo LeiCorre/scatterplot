@@ -5,6 +5,12 @@ import * as d3 from 'd3';
 import { timeParse, timeFormat } from 'd3';
 
 const css = `
+body {
+  background-color: lightGray;
+}
+a {
+  font-size: 12px;
+}
 #tooltip {
   background-color: rgb(151, 224, 148, 0.7);
   box-shadow: 0 0 5px 3px rgb(15, 15, 15, 0.8);
@@ -21,7 +27,14 @@ const css = `
   top: 90px; }
 
   svg {
-    margin-top: -50px;
+    margin-top: -60px;
+    margin-bottom: -60px;
+  }
+
+  #foot {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
   }
 
 `
@@ -50,7 +63,7 @@ const req = new XMLHttpRequest();
      
 
       const yScale = d3.scaleTime()
-                       .domain([(new Date('Saturday June 30, 2020 12:' + d3.min(json, (d) =>  d['Time']))), (new Date('Saturday June 30, 2020 12:' + d3.max(json, (d) =>  d['Time']) )) ])
+                       .domain([(new Date('Saturday June 30, 2020 12:' + d3.max(json, (d) =>  d['Time']) )), (new Date('Saturday June 30, 2020 12:' + d3.min(json, (d) =>  d['Time']))) ])
                        .range([h-p, p]);             
                            
 
@@ -113,16 +126,17 @@ const req = new XMLHttpRequest();
             svg.append('foreignObject')
             
             .attr('width', 200)
-            .attr('height', 100)
+            .attr('height', 50)
             .attr('x', 780)
             .attr('y', 380)
             
             .attr('id', 'legend')
             .style('text-align', 'left')
-            
+            .style('font-size', '12px')
+            .style('font-weight', '700')            
             .html(`<div syle='text-align:left;'><div id='b1' style="background-color:green;height:18px;width:18px;display:inline-block;">&nbsp;&nbsp;&nbsp;</div> Doping<br> <div id='b2' style="background-color:purple;height:18px;width:18px;display:inline-block;">&nbsp;</div> Not Doping</div>`)
               
-    
+    d3.select('body').append('div').attr('id', 'foot').text('Coded by LeiCorre w/ code Refs at top')
     }
 //https://forum.freecodecamp.org/t/d3-difficulty-getting-the-y-axis-to-show-time/261140 Writing time as string
 //https://stackoverflow.com/questions/11189284/d3-axis-labeling  Axis Labelling
@@ -132,6 +146,10 @@ function App() {
     <div class="App">
 
      <style>{css}</style> 
+    <a href="https://bl.ocks.org/Jverma/2385cb7794d18c51e3ab">Using foreignObject</a>&nbsp;|&nbsp;
+    <a href="https://stackoverflow.com/questions/11189284/d3-axis-labeling">Using Anchortext</a>&nbsp;|&nbsp;
+    <a href="https://forum.freecodecamp.org/t/d3-difficulty-getting-the-y-axis-to-show-time/261140">Passing the Time object a string</a>&nbsp;|&nbsp;
+    <a href='https://www.freecodecamp.org/forum/t/d3-tooltip-wanted-is-that-15-chars-now/92398/6'>Tooltip Reference</a>
     </div>
   );
 
