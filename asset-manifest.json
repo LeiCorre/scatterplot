@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/scatterplot/static/css/main.d3aaa3ee.chunk.css",
+    "main.js": "/scatterplot/static/js/main.989ce21c.chunk.js",
+    "main.js.map": "/scatterplot/static/js/main.989ce21c.chunk.js.map",
+    "runtime-main.js": "/scatterplot/static/js/runtime-main.332fce24.js",
+    "runtime-main.js.map": "/scatterplot/static/js/runtime-main.332fce24.js.map",
+    "static/js/2.05407029.chunk.js": "/scatterplot/static/js/2.05407029.chunk.js",
+    "static/js/2.05407029.chunk.js.map": "/scatterplot/static/js/2.05407029.chunk.js.map",
+    "index.html": "/scatterplot/index.html",
+    "precache-manifest.8376926bfbdbe80280af7e1418728800.js": "/scatterplot/precache-manifest.8376926bfbdbe80280af7e1418728800.js",
+    "service-worker.js": "/scatterplot/service-worker.js",
+    "static/css/main.d3aaa3ee.chunk.css.map": "/scatterplot/static/css/main.d3aaa3ee.chunk.css.map",
+    "static/js/2.05407029.chunk.js.LICENSE.txt": "/scatterplot/static/js/2.05407029.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.332fce24.js",
+    "static/js/2.05407029.chunk.js",
+    "static/css/main.d3aaa3ee.chunk.css",
+    "static/js/main.989ce21c.chunk.js"
+  ]
+}
