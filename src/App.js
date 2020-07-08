@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import * as d3 from 'd3';
-import { timeParse, timeFormat } from 'd3';
+import { timeFormat } from 'd3';
 
+// used answer from https://stackoverflow.com/questions/27530462/tag-error-react-jsx-style-tag-error-on-render by Sebastian to show me how to place CSS styling directly in App.js
 const css = `
 body {
   background-color: lightGray;
@@ -62,7 +63,7 @@ const req = new XMLHttpRequest();
 
      
 
-      const yScale = d3.scaleTime()
+      const yScale = d3.scaleTime() //passing a string into the date object was the idea I got from https://forum.freecodecamp.org/t/d3-difficulty-getting-the-y-axis-to-show-time/261140
                        .domain([(new Date('Saturday June 30, 2020 12:' + d3.max(json, (d) =>  d['Time']) )), (new Date('Saturday June 30, 2020 12:' + d3.min(json, (d) =>  d['Time']))) ])
                        .range([h-p, p]);             
                            
@@ -102,7 +103,7 @@ const req = new XMLHttpRequest();
         .on('mouseout', function () {
           box = box.style('display', 'none')
         });
-         
+        // I picked up adding the text anchor to the text label for the axis from here https://stackoverflow.com/questions/11189284/d3-axis-labeling 
         svg.append('text').text("Time in Minutes").attr('text-anchor', 'end').attr('x', '-100').attr('y', 50).style('transform', 'rotate(270deg) ').style('font-size', '12px').style('font-weight', '700') 
         
 
@@ -124,7 +125,7 @@ const req = new XMLHttpRequest();
     
 
             svg.append('foreignObject')
-            
+            // I picked up the use of foreignObject to append a div to an svg from here https://bl.ocks.org/Jverma/2385cb7794d18c51e3ab
             .attr('width', 200)
             .attr('height', 50)
             .attr('x', 780)
@@ -138,9 +139,7 @@ const req = new XMLHttpRequest();
               
     d3.select('body').append('div').attr('id', 'foot').text('Coded by LeiCorre w/ code Refs at top')
     }
-//https://forum.freecodecamp.org/t/d3-difficulty-getting-the-y-axis-to-show-time/261140 Writing time as string
-//https://stackoverflow.com/questions/11189284/d3-axis-labeling  Axis Labelling
-//https://bl.ocks.org/Jverma/2385cb7794d18c51e3ab  foreignObject
+
 function App() {
   return (
     <div class="App">
@@ -150,6 +149,7 @@ function App() {
     <a href="https://stackoverflow.com/questions/11189284/d3-axis-labeling">Using Anchortext</a>&nbsp;|&nbsp;
     <a href="https://forum.freecodecamp.org/t/d3-difficulty-getting-the-y-axis-to-show-time/261140">Passing the Time object a string</a>&nbsp;|&nbsp;
     <a href='https://www.freecodecamp.org/forum/t/d3-tooltip-wanted-is-that-15-chars-now/92398/6'>Tooltip Reference</a>
+    <a href='https://stackoverflow.com/questions/27530462/tag-error-react-jsx-style-tag-error-on-render'>Inline CSS Styling</a>
     </div>
   );
 
