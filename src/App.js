@@ -14,22 +14,21 @@ a {
 }
 #tooltip {
   background-color: rgb(151, 224, 148, 0.7);
-  box-shadow: 0 0 5px 3px rgb(15, 15, 15, 0.8);
+  box-shadow: 0 0 5px 3px rgb(47,79,79, 0.8);
   font-size: 11px;
   float: right;
   min-height: 30px;
-  text-align: left;
   border-radius: 10px;
   min-width: 150px;
-  text-align: center;
   padding: 10px;
   z-index: 999;
   position: absolute;
-  top: 90px; }
+  top: 90px; 
+}
 
   svg {
-    margin-top: -60px;
-    margin-bottom: -60px;
+    margin: -60px 0;
+    
   }
 
   #foot {
@@ -52,15 +51,12 @@ const req = new XMLHttpRequest();
 
       
       d3.select('.App').append('h1').text("Professional Cyclists and Times, Doping vs Not").attr('id', 'title') 
-     
-      
-        
+       
       const xScale = d3.scaleTime()
                        .domain([new Date(1994, 1 ,1), new Date(d3.max(json, (d) => d['Year']),1,1) ])
                        .range([p, w-p])
                        .clamp(true)
                        .nice();
-
      
 
       const yScale = d3.scaleTime() //passing a string into the date object was the idea I got from https://forum.freecodecamp.org/t/d3-difficulty-getting-the-y-axis-to-show-time/261140
@@ -73,7 +69,11 @@ const req = new XMLHttpRequest();
                     .attr('height', h)
                     .attr('width', w);
 
-  let box = d3.select('.App').append('div').text('hello').attr('id', 'tooltip').style('display', 'none'); //inspired by the last answer on this post (https://www.freecodecamp.org/forum/t/d3-tooltip-wanted-is-that-15-chars-now/92398/6)    
+      let box = d3.select('.App')
+                  .append('div')
+                  .text('hello')
+                  .attr('id', 'tooltip')
+                  .style('display', 'none'); //inspired by the last answer on this post (https://www.freecodecamp.org/forum/t/d3-tooltip-wanted-is-that-15-chars-now/92398/6)    
   
  
       svg.selectAll('circle')
@@ -124,13 +124,12 @@ const req = new XMLHttpRequest();
             .call(yA) 
     
 
-            svg.append('foreignObject')
+         svg.append('foreignObject')
             // I picked up the use of foreignObject to append a div to an svg from here https://bl.ocks.org/Jverma/2385cb7794d18c51e3ab
             .attr('width', 200)
             .attr('height', 50)
             .attr('x', 780)
             .attr('y', 380)
-            
             .attr('id', 'legend')
             .style('text-align', 'left')
             .style('font-size', '12px')
